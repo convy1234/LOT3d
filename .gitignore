@@ -3,3 +3,9 @@ Thumbs.db
 node_modules/
 .idea/
 .vscode/
+
+.venv/
+db.sqlite3
+__pycache__/
+*.py[cod]
+staticfiles/

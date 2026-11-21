@@ -1,20 +1,21 @@
 ﻿# Siloam 2027 Church Experience
 
-A standalone interactive Three.js experience for the Layers of Truth SILOAM 2027 conference.
+An independent Django project for the interactive Layers of Truth SILOAM 2027 auditorium experience.
 
 ## Run locally
 
-Use any static server from this folder. For example:
-
 ```powershell
-python -m http.server 8000
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+python manage.py runserver
 ```
 
-Then open `http://localhost:8000`. The page uses a CDN for Three.js and embedded YouTube video, so an internet connection is required for those parts.
+Then open `http://127.0.0.1:8000/`.
 
-## Project structure
+## Layout
 
-- `index.html` — application shell
-- `assets/` — 3D scene code, styling, audio, and minister images
+- `siloam_site/` — Django project configuration
+- `auditorium/` — auditorium view, template, and static 3D assets
 - `references/` — original church reference imagery
-- `legacy-prototype/` — the earlier standalone prototype, preserved for reference
+- `legacy-prototype/` — earlier standalone prototype retained for reference

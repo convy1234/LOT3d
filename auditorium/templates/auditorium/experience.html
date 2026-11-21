@@ -1,11 +1,12 @@
-﻿<!doctype html>
+﻿{% load static %}
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#07080c">
   <title>SILOAM 2027 â€” Layers of Truth</title>
-  <link rel="stylesheet" href="./assets/experience.css">
+  <link rel="stylesheet" href="{% static 'auditorium/experience.css' %}">
 </head>
 <body class="is-intro">
   <main class="experience-shell">
@@ -14,7 +15,7 @@
 
     <header class="topbar">
       <button class="brand" id="hall-home" type="button" aria-label="SILOAM 2027, back to the hall">
-        <img src="./assets/layers-of-truth-logo.jpg" alt="Layers of Truth">
+        <img src="{% static 'auditorium/layers-of-truth-logo.jpg' %}" alt="Layers of Truth">
         <span>SILOAM <em>2027</em></span>
       </button>
       <button class="view-control music-control" id="music-toggle" type="button" aria-label="Background music" aria-pressed="false">Music off</button>
@@ -61,7 +62,7 @@
 
     <div class="led-player" id="led-player" hidden></div>
     <button class="view-control led-zoom" id="zoom-video-led" type="button" data-led="centre" hidden>Zoom to centre LED</button>
-    <audio id="worship-audio" preload="none" loop src="./assets/siloam-worship.m4a"></audio>
+    <audio id="worship-audio" preload="none" loop src="{% static 'auditorium/siloam-worship.m4a' %}"></audio>
     <aside class="conference-panel" id="conference-panel" aria-labelledby="panel-title" hidden>
       <button class="panel-close" id="close-panel" type="button" aria-label="Close conference panel">Ã—</button>
       <h2 id="panel-title" tabindex="-1">Experience</h2>
@@ -72,11 +73,11 @@
       <div data-panel="ministers" hidden>
         <div class="minister-options" aria-label="Select a minister">
           <button type="button" class="minister-option" data-video="5C__MWb3q0E" data-role="Head Steward, Layers of Truth" aria-pressed="false">
-            <img src="./assets/pastor-doyin-akerele.jpg" alt="">
+            <img src="{% static 'auditorium/pastor-doyin-akerele.jpg' %}" alt="">
             <span>Pastor Doyin Akerele</span>
           </button>
           <button type="button" class="minister-option" data-video="a17GVWWdFhI" data-role="Minister, Layers of Truth" aria-pressed="false">
-            <img src="./assets/jo-e.jpg" alt="">
+            <img src="{% static 'auditorium/jo-e.jpg' %}" alt="">
             <span>Minister Joe-E</span>
           </button>
         </div>
@@ -101,7 +102,7 @@
       <strong>SILOAM <em>2027</em></strong>
       <span aria-hidden="true"></span>
       <small id="loading-status" role="status">PREPARING THE EXPERIENCE</small>
-      <a class="panel-link" id="retry-preview" href="./" hidden>Reload preview</a>
+      <a class="panel-link" id="retry-preview" href="{% url 'auditorium:experience' %}" hidden>Reload preview</a>
     </div>
   </main>
   <script>
@@ -113,7 +114,7 @@
       document.getElementById("retry-preview").hidden = false;
     }
     const startupTimeout = setTimeout(showPreviewError, 12000);
-    import("./assets/experience.js").catch(error => {
+    import("{% static 'auditorium/experience.js' %}").catch(error => {
       clearTimeout(startupTimeout);
       console.error("SILOAM preview startup failed", error);
       showPreviewError();
@@ -121,4 +122,5 @@
   </script>
 </body>
 </html>
+
 
