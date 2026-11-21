@@ -1,0 +1,124 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07080c">
+  <title>SILOAM 2027 â€” Layers of Truth</title>
+  <link rel="stylesheet" href="./assets/experience.css">
+</head>
+<body class="is-intro">
+  <main class="experience-shell">
+    <canvas id="church-canvas" aria-label="Interactive 3D church auditorium"></canvas>
+    <div class="noise" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <button class="brand" id="hall-home" type="button" aria-label="SILOAM 2027, back to the hall">
+        <img src="./assets/layers-of-truth-logo.jpg" alt="Layers of Truth">
+        <span>SILOAM <em>2027</em></span>
+      </button>
+      <button class="view-control music-control" id="music-toggle" type="button" aria-label="Background music" aria-pressed="false">Music off</button>
+      <details class="camera-menu" id="camera-menu">
+        <summary>Camera controls</summary>
+        <div class="camera-options">
+          <p class="eyebrow" id="view-label">ALTAR VIEW</p>
+          <div class="camera-presets" aria-label="Auditorium views">
+            <button class="view-control is-active" type="button" data-view="altar" aria-pressed="true">Altar</button>
+            <button class="view-control" type="button" data-view="centre" aria-pressed="false">Side aisle</button>
+            <button class="view-control" type="button" data-view="rear" aria-pressed="false">Rear section</button>
+            <button class="view-control" type="button" data-view="stage" aria-pressed="false">Stage</button>
+            <button class="view-control" type="button" data-view="drums" aria-pressed="false">Instruments</button>
+            <button class="view-control" type="button" data-view="audience" aria-pressed="false">Chair fronts</button>
+          </div>
+          <div class="camera-presets" aria-label="Move camera">
+            <button class="view-control" id="closer" type="button" aria-label="Move closer">+</button>
+            <button class="view-control" id="further" type="button" aria-label="Move back">âˆ’</button>
+            <button class="view-control" id="turn-around" type="button">Turn around</button>
+          </div>
+          <div class="camera-presets" aria-label="Zoom to a screen">
+            <button class="view-control" type="button" data-led="left">Left LED</button>
+            <button class="view-control" type="button" data-led="centre">Centre LED</button>
+            <button class="view-control" type="button" data-led="right">Right LED</button>
+          </div>
+          <button class="view-control" id="lighting-button" type="button" aria-pressed="false">DIM LIGHTS</button>
+        </div>
+      </details>
+    </header>
+
+    <section class="intro-card" id="intro-card">
+      <p class="eyebrow">LAYERS OF TRUTH PRESENTS</p>
+      <h1>SILOAM<br><em>2027</em></h1>
+      <p class="intro-copy">Are you ready?</p>
+      <button class="enter-button" id="enter-button" type="button">YES, I'M READY <span>â†’</span></button>
+      <button class="quiet-button" id="skip-intro" type="button" hidden>Skip intro</button>
+    </section>
+
+    <nav class="conference-nav" aria-label="Conference sections">
+      <button class="view-control" type="button" data-section="experience" aria-controls="conference-panel" aria-expanded="false">Experience</button>
+      <button class="view-control" type="button" data-section="ministers" aria-controls="conference-panel" aria-expanded="false">Ministers</button>
+      <button class="view-control" type="button" data-section="programme" aria-controls="conference-panel" aria-expanded="false">Programme</button>
+    </nav>
+
+    <div class="led-player" id="led-player" hidden></div>
+    <button class="view-control led-zoom" id="zoom-video-led" type="button" data-led="centre" hidden>Zoom to centre LED</button>
+    <audio id="worship-audio" preload="none" loop src="./assets/siloam-worship.m4a"></audio>
+    <aside class="conference-panel" id="conference-panel" aria-labelledby="panel-title" hidden>
+      <button class="panel-close" id="close-panel" type="button" aria-label="Close conference panel">Ã—</button>
+      <h2 id="panel-title" tabindex="-1">Experience</h2>
+      <div data-panel="experience" hidden>
+        <p>SILOAM is a Layers of Truth gathering for teaching, worship and fellowship in Kaduna.</p>
+        <p>Explore the auditorium, meet the featured ministers and revisit past editions.</p>
+      </div>
+      <div data-panel="ministers" hidden>
+        <div class="minister-options" aria-label="Select a minister">
+          <button type="button" class="minister-option" data-video="5C__MWb3q0E" data-role="Head Steward, Layers of Truth" aria-pressed="false">
+            <img src="./assets/pastor-doyin-akerele.jpg" alt="">
+            <span>Pastor Doyin Akerele</span>
+          </button>
+          <button type="button" class="minister-option" data-video="a17GVWWdFhI" data-role="Minister, Layers of Truth" aria-pressed="false">
+            <img src="./assets/jo-e.jpg" alt="">
+            <span>Minister Joe-E</span>
+          </button>
+        </div>
+        <div class="minister-profile" aria-live="polite">
+          <h3 id="minister-name"></h3>
+          <p id="minister-role"></p>
+        </div>
+        <a id="watch-minister" class="panel-link" target="_blank" rel="noopener noreferrer">Watch on YouTube â†—</a>
+        <button class="quiet-button reframe-button" id="reload-led-video" type="button">Reload LED video</button>
+        <button class="quiet-button reframe-button" id="reframe-leds" type="button">Reframe the LEDs</button>
+      </div>
+      <div data-panel="programme" hidden>
+        <p>The SILOAM 2027 theme, dates and session times are to be announced.</p>
+        <h3>Past editions</h3>
+        <p><strong>2026 Â· The New &amp; Living Way</strong><br>Hebrews 10:20 Â· <a class="panel-link" href="https://www.youtube.com/watch?v=MidoCjWS9E0" target="_blank" rel="noopener noreferrer">Watch Day 2 â†—</a></p>
+        <p><strong>2025 Â· The Bride Groom Cometh</strong><br>6â€“9 June 2025 Â· <a class="panel-link" href="https://layersoftruth.org/siloam2025/" target="_blank" rel="noopener noreferrer">Conference archive â†—</a></p>
+      </div>
+    </aside>
+
+    <p class="hint" id="hint">Click an LED to zoom Â· drag to turn Â· scroll to move</p>
+    <div class="loading" id="loading">
+      <strong>SILOAM <em>2027</em></strong>
+      <span aria-hidden="true"></span>
+      <small id="loading-status" role="status">PREPARING THE EXPERIENCE</small>
+      <a class="panel-link" id="retry-preview" href="./" hidden>Reload preview</a>
+    </div>
+  </main>
+  <script>
+    const loadingScreen = document.getElementById("loading");
+    function showPreviewError() {
+      if (loadingScreen.classList.contains("is-done")) return;
+      loadingScreen.classList.add("has-error");
+      document.getElementById("loading-status").textContent = "The 3D hall could not start.";
+      document.getElementById("retry-preview").hidden = false;
+    }
+    const startupTimeout = setTimeout(showPreviewError, 12000);
+    import("./assets/experience.js").catch(error => {
+      clearTimeout(startupTimeout);
+      console.error("SILOAM preview startup failed", error);
+      showPreviewError();
+    });
+  </script>
+</body>
+</html>
+

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Church Experience | Auditorium Prototype</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js"}}
+  </script>
+</head>
+<body>
+  <main class="experience-shell">
+    <canvas id="auditorium" aria-label="Interactive 3D view of the church auditorium"></canvas>
+    <section class="loading" id="loading" aria-live="polite">
+      <p class="eyebrow">CHURCH EXPERIENCE</p><h1>Entering the auditorium</h1><div class="progress"><span></span></div>
+    </section>
+    <header class="topbar"><div class="brand"><span class="brand-mark">✦</span><span>YOUR CHURCH</span></div><button class="sound-button" id="sound" type="button" aria-pressed="false">Sound off</button></header>
+    <section class="hero-copy"><p class="eyebrow">SERVICE-READY AUDITORIUM</p><h1>A place prepared<br>for <em>encounter.</em></h1><p class="intro">A first interactive study of the full hall: blue front seating, red rear seating, black carpet, stage screens, lighting and technical equipment.</p><div class="actions"><button id="tour" class="primary" type="button">Begin tour <span>→</span></button><button id="overview" class="secondary" type="button">View full hall</button></div></section>
+    <aside class="guide"><span class="pulse"></span><span>Drag to look around · scroll to zoom</span></aside>
+    <nav class="scene-nav" aria-label="Auditorium viewpoints"><button data-view="rear" class="active" type="button">Rear view</button><button data-view="aisle" type="button">Central aisle</button><button data-view="stage" type="button">Stage view</button></nav>
+    <div class="info-card" id="info-card" hidden><button id="close-info" aria-label="Close information" type="button">×</button><p class="eyebrow">AUDITORIUM</p><h2>Full-hall prototype</h2><p>This is the visual baseline. We will replace the simplified objects with measured models and final assets after the walkthrough is approved.</p></div>
+  </main>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
